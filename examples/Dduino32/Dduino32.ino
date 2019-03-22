@@ -19,7 +19,7 @@ void setup() {
 
 void loop() {
     display.clear();
-    display.drawString(0, 0, "Tets Sketch");
+    display.drawString(0, 0, "Test Sketch");
     display.display();
     delay(1000);
 }

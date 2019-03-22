@@ -66,7 +66,7 @@ bool update_u_cursor(u_cursor* cursor, int up, int down, int entries_per_page) {
 }
 
 // ========== EXTERNAL ========== //
-void DstikeUpdater::run(OLEDDisplay& display, int up, int down, int select, const char* path, int loading_delay) {
+void DstikeUpdater::run(OLEDDisplay& display, int up, int down, int select, const char* path, int loadingDelay) {
     init_display(display);          // Initialize display
     init_buttons(up, down, select); // Initialize buttons as INPUT_PULLUP
 
@@ -76,7 +76,7 @@ void DstikeUpdater::run(OLEDDisplay& display, int up, int down, int select, cons
     // Check if SD is connected
     if (!init_sd()) { // Initialize SD/MMC Card
         draw_no_sd(display);
-        draw_loading_bar(display, loading_delay);
+        draw_loading_bar(display, loadingDelay);
         display_clear(display);
 
         return;
@@ -86,7 +86,7 @@ void DstikeUpdater::run(OLEDDisplay& display, int up, int down, int select, cons
     display_show(display);
 
     // Show loading screen and check for button press
-    if (!loading_screen(display, up, down, select, loading_delay)) {
+    if (!loading_screen(display, up, down, select, loadingDelay)) {
         display_clear(display);
         return;
     };
@@ -128,7 +128,7 @@ void DstikeUpdater::run(OLEDDisplay& display, int up, int down, int select, cons
                 display_clear(display);
                 draw_headline(display);
                 draw_canceled(display);
-                draw_loading_bar(display, loading_delay);
+                draw_loading_bar(display, loadingDelay);
                 display_show(display);
             } else {
                 display_clear(display);
@@ -138,7 +138,7 @@ void DstikeUpdater::run(OLEDDisplay& display, int up, int down, int select, cons
 
                 draw_string_f(display, 1, flash_bin(fs, file_path));
                 draw_rebooting(display);
-                draw_loading_bar(display, loading_delay);
+                draw_loading_bar(display, loadingDelay);
 
                 ESP.restart();
             }
@@ -150,4 +150,18 @@ void DstikeUpdater::run(OLEDDisplay& display, int up, int down, int select, cons
     delete_u_cursor(c);
 
     display_clear(display);
+}
+
+void DstikeUpdater::runSH1106(int sda, int sck, int up, int down, int select, const char* path, int loadingDelay) {
+    SH1106Wire display(0x3c, sda, sck);
+
+    run(display, up, down, select, path, loadingDelay);
+    display.end();
+}
+
+void DstikeUpdater::runSSD1306(int sda, int sck, int up, int down, int select, const char* path, int loadingDelay) {
+    SSD1306 display(0x3c, sda, sck);
+
+    run(display, up, down, select, path, loadingDelay);
+    display.end();
 }

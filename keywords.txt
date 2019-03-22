@@ -14,6 +14,8 @@ DstikeUpdater	KEYWORD1
 
 # DstikeUpdater
 run	KEYWORD2
+runSH1106	KEYWORD2
+runSSD1306	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

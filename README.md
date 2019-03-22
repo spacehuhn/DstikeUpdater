@@ -27,8 +27,7 @@ But it can also run on other boards that fulfill these requirements:
 
 Example for DSTIKE D-duino-32 Final:   
 ```c++
-#include <SH1106Wire.h> // Inlucde OLED library
-#include <DstikeUpdater.h> // Inlcude updater library
+#include <DstikeUpdater.h> // Include updater library
 
 // Pin definitions
 #define BUTTON_UP 32
@@ -37,13 +36,10 @@ Example for DSTIKE D-duino-32 Final:
 #define OLED_SDA 26
 #define OLED_SCK 27
 
-// Create display
-SH1106Wire display(0x3c, OLED_SDA, OLED_SCK);
-
 void setup() {
     // Run updater
-    DstikeUpdater::run(display, BUTTON_UP, BUTTON_DOWN, BUTTON_SELECT);
-    
+    DstikeUpdater::runSH1106(OLED_SDA, OLED_SCK, BUTTON_UP, BUTTON_DOWN, BUTTON_SELECT);
+
     // ...
 }
 
@@ -54,7 +50,9 @@ void loop() {
 
 Definition of the `run` method:  
 ```c++
-static void run(OLEDDisplay & display, int up, int down, int select, const char* path = UPDATER_PATH, int loading_delay = LOADING_DELAY);
+static void run(OLEDDisplay & display, int up, int down, int select, const char* path   = UPDATER_PATH, int loadingDelay = LOADING_DELAY);
+static void runSH1106(int sda, int sck, int up, int down, int select, const char* path  = UPDATER_PATH, int loadingDelay = LOADING_DELAY);
+static void runSSD1306(int sda, int sck, int up, int down, int select, const char* path = UPDATER_PATH, int loadingDelay = LOADING_DELAY);
 ```
 
 `UPDATER_PATH` defaults to `"/update"`.  
