@@ -4,12 +4,12 @@
 // #define UPDATER_PATH "/update" // folder where bin files are located
 // #define LOADING_DELAY 3500 // time to press button at startup
 
-/****** DSTIKE Wristband ******/
-#define BUTTON_UP 19
-#define BUTTON_DOWN 5
-#define BUTTON_SELECT 18
-#define OLED_SDA 17
-#define OLED_SCK 16
+/****** DSTIKE dduino-32 SD ******/
+#define BUTTON_UP 32
+#define BUTTON_DOWN 25
+#define BUTTON_SELECT 33
+#define OLED_SDA 26
+#define OLED_SCK 27
 
 SH1106Wire display(0x3c, OLED_SDA, OLED_SCK);
 
@@ -19,7 +19,7 @@ void setup() {
 
 void loop() {
     display.clear();
-    display.drawString(0, 0, "TEST B");
+    display.drawString(0, 0, "Tets Sketch");
     display.display();
     delay(1000);
 }
