@@ -42,7 +42,7 @@ SH1106Wire display(0x3c, OLED_SDA, OLED_SCK);
 
 void setup() {
     // Run updater
-    DstikeUpdater::run(display, BUTTON_UP, BUTTON_DOWN, BUTTON_SELECT /*,UPDATER_PATH, LOADING_DELAY*/);
+    DstikeUpdater::run(display, BUTTON_UP, BUTTON_DOWN, BUTTON_SELECT);
     
     // ...
 }
@@ -52,32 +52,13 @@ void loop() {
 }
 ```
 
-Example DSTIKE ESP32 DevKit OLED (different pin definitions):   
+Definition of the `run` method:  
 ```c++
-#include <SH1106Wire.h> // Inlucde OLED library
-#include <DstikeUpdater.h> // Inlcude updater library
-
-// Pin definitions
-#define BUTTON_UP 19
-#define BUTTON_DOWN 5
-#define BUTTON_SELECT 18
-#define OLED_SDA 17
-#define OLED_SCK 16
-
-// Create display
-SH1106Wire display(0x3c, OLED_SDA, OLED_SCK);
-
-void setup() {
-    // Run updater
-    DstikeUpdater::run(display, BUTTON_UP, BUTTON_DOWN, BUTTON_SELECT /*,UPDATER_PATH, LOADING_DELAY*/);
-    
-    // ...
-}
-
-void loop() {
-    // ...
-}
+static void run(OLEDDisplay & display, int up, int down, int select, const char* path = UPDATER_PATH, int loading_delay = LOADING_DELAY);
 ```
+
+`UPDATER_PATH ` defaults to `"/update"`.  
+`LOADING_DELAY` defaults to `3500`.  
 
 ## License
 
