@@ -6,17 +6,17 @@ ESP32 OLED SD Updater Library for DSTIKE Boards
 This library is made for the **DSTIKE D-duino-32 Final** and **DSTIKE ESP32 Watch DevKit OLED**.  
 
 But it can also run on other boards that fulfill these requirements:  
-- ESP32 Chip
+- ESP32 SoC
 - OLED display (SSD1306 or SH1106) with 128x64 pixel
 - Up, down and select buttons as [input pullup](https://www.arduino.cc/en/Tutorial/InputPullupSerial)
 - SD card slot connected to the SD/MMC pins (check [this example](https://github.com/espressif/arduino-esp32/blob/master/libraries/SD_MMC/examples/SDMMC_Test/SDMMC_Test.ino))
 
 ## Installation
 
-1) Click [Download Zip](https://github.com/spacehuhn/DstikeUpdater/archive/master.zip) to download the source code from GitHub.  
-2) Unzip and rename the Folder name to "DstikeUpdater".  
-3) Paste it in your library folder (usually located somewhere at documents/Arduino/libraries).  
-4) Restart the Arduino IDE.  
+1) Click [Download Zip](https://github.com/spacehuhn/DstikeUpdater/archive/master.zip) to download the source code from GitHub.
+2) Unzip and rename the Folder name to "DstikeUpdater".
+3) Paste it in your library folder (usually located somewhere at documents/Arduino/libraries).
+4) Restart the Arduino IDE.
 
 5) Install the OLED library using the same steps, from [ThingPulse/esp8266-oled-ssd1306](https://github.com/ThingPulse/esp8266-oled-ssd1306)
 
@@ -25,7 +25,7 @@ But it can also run on other boards that fulfill these requirements:
 1) Include the library `#include <DstikeUpdater.h>`
 2) In the begin of `void setup()` add `DstikeUpdater::run()`
 
-Example DSTIKE D-duino-32 Final:   
+Example for DSTIKE D-duino-32 Final:   
 ```c++
 #include <SH1106Wire.h> // Inlucde OLED library
 #include <DstikeUpdater.h> // Inlcude updater library
@@ -57,7 +57,7 @@ Definition of the `run` method:
 static void run(OLEDDisplay & display, int up, int down, int select, const char* path = UPDATER_PATH, int loading_delay = LOADING_DELAY);
 ```
 
-`UPDATER_PATH ` defaults to `"/update"`.  
+`UPDATER_PATH` defaults to `"/update"`.  
 `LOADING_DELAY` defaults to `3500`.  
 
 ## License
