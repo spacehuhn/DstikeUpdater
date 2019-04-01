@@ -1,4 +1,4 @@
-# DstikeUpdater
+# DstikeUpdater OLED
 ESP32 OLED SD Updater Library for DSTIKE Boards
 
 ## Supported Devices
@@ -22,6 +22,7 @@ But it can also run on other boards that fulfill these requirements:
 
 ## Usage
 
+### Arduino IDE
 1) Include the library `#include <DstikeUpdater.h>`
 2) In the begin of `void setup()` add `DstikeUpdater::run()`
 
@@ -57,6 +58,23 @@ static void runSSD1306(int sda, int sck, int up, int down, int select, const cha
 
 `UPDATER_PATH` defaults to `"/update"`.  
 `LOADING_DELAY` defaults to `3500`.  
+
+### Dev. Board
+
+1) Get a micro SD card and format it to FAT32
+2) Create the `update` folder in root
+3) Move your `*.bin` files in the `update` folder (`SD:\update\yourfile.bin`)
+4) Power up your board
+5) Press a button in the first 3 seconds to start the updater
+6) Select a file to flash it
+
+![Click to start updater](images/click.jpg)  
+
+![Selecting file](images/select.jpg)  
+
+![Flashing file](images/flashing.jpg)  
+
+![Update finished](images/update_finished.jpg)  
 
 ## License
 
