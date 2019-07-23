@@ -5,7 +5,7 @@
   "description": "ESP32 OLED SD Updater Library for DSTIKE Boards",
   "repository":  {
     "type": "git",
-    "url": "https://github.com/spacehuhn/DstikeUpdarer.git"
+    "url": "https://github.com/spacehuhn/DstikeUpdater.git"
   },
   "authors":  [
     {
@@ -15,5 +15,5 @@
     }
   ],
   "frameworks": "arduino",
-  "platforms": "ESP32"
+  "platforms": "espressif32"
 }
